@@ -1,8 +1,7 @@
 ### READ.ME
-git clone 
-Navegue até o diretório do projeto:
 
-bash
+Clone o repositorio 
+
 ```
 cd projectiva-webapp
 
@@ -26,5 +25,5 @@ Após a instalação das dependências, você pode rodar o projeto em modo de de
 bash
 ```
 npm run dev
-Abra http://localhost:3000 para visualizar a aplicação no navegador.
+
 ```
