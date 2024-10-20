@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id            Int             @id @default(autoincrement())
+  username      String          @unique
+  email         String          @unique
+  password      String
+  role          String // 'manager' ou 'employee'
+  managedSquads Squad[]         @relation("Manager")
+  tasks         Task[]
+  squads        UserSquadLink[]
+}
+
+model Squad {
+  id        Int             @id @default(autoincrement())
+  name      String
+  managerId Int
+  manager   User            @relation(fields: [managerId], references: [id], name: "Manager")
+  members   UserSquadLink[]
+  tasks     Task[]
+}
+
+model UserSquadLink {
+  id      Int   @id @default(autoincrement())
+  userId  Int
+  squadId Int
+  role    String
+  user    User  @relation(fields: [userId], references: [id])
+  squad   Squad @relation(fields: [squadId], references: [id])
+}
+
+model Task {
+  id          Int    @id @default(autoincrement())
+  description String
+  userId      Int
+  assignedTo  User   @relation(fields: [userId], references: [id])
+  squadId     Int
+  squad       Squad  @relation(fields: [squadId], references: [id])
+  status      String
+}

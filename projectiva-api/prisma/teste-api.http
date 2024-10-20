@@ -1,0 +1,93 @@
+### GET TODOS OS USUARIOS 
+GET http://localhost:3333/auth/users
+
+
+### Registro de Usuário - Gerente
+# Este endpoint registra um novo usuário com o papel de gerente.
+POST http://localhost:3333/auth/register
+Content-Type: application/json
+
+{
+  "username": "smith1",
+  "email": "smith1@smith",
+  "password": "senha",
+  "role": "manager"
+}
+
+
+### Registro de Usuário - Funcionário
+# Este endpoint registra um novo usuário com o papel de funcionário.
+POST http://localhost:3333/auth/register
+Content-Type: application/json
+
+{
+  "username": "funcion",
+  "email": "funcion@example.com",
+  "password": "senha123",
+  "role": "employee"
+}
+
+### Login de Usuário
+# Este endpoint permite que um usuário faça login e obtenha um token de acesso JWT.
+POST http://localhost:3333/auth/login
+Content-Type: application/json
+
+{
+  "email": "funcion@example.com",
+  "password": "funcion@example.com"
+}
+
+### Criar Squad
+# Este endpoint permite que um gerente crie um novo squad.
+POST http://localhost:3333/squads/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbnNlbjEiLCJzdWIiOjgsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzI5MTEzMDQxLCJleHAiOjE3MjkxMTY2NDF9._hVG3qqWNSNL5HDkynRmifZqv5j8weYCc5vdivRxXY8
+
+{
+  "name": "Squad ",
+  "managerId": 8
+}
+
+
+### Acessar Squad Privado (requere autenticação)
+GET http://localhost:3333/squads
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbnNlbjEiLCJzdWIiOjgsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzI5MTEzMDQxLCJleHAiOjE3MjkxMTY2NDF9._hVG3qqWNSNL5HDkynRmifZqv5j8weYCc5vdivRxXY8
+
+###
+
+### ATUALIZAR SQUAD CRIADO
+PUT http://localhost:3000/squads/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbnNlbjEiLCJzdWIiOjgsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzI5MTEzMDQxLCJleHAiOjE3MjkxMTY2NDF9._hVG3qqWNSNL5HDkynRmifZqv5j8weYCc5vdivRxXY8
+
+{
+  "name": "Novo Nome do Squad"
+}
+
+### deletar SQUAD 
+DELETE http://localhost:3333/squads/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbnNlbiIsInN1YiI6Nywicm9sZSI6Im1hbmFnZXIiLCJpYXQiOjE3MjkyNzU4NjQsImV4cCI6MTcyOTI3OTQ2NH0.dYg-HszPYSJz4R_pR7ETyBphevrStR_GCtrnLhefcR8
+
+
+### GET TODOS OS SQUADS
+GET http://localhost:3333/squads
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbnNlbiIsInN1YiI6Nywicm9sZSI6Im1hbmFnZXIiLCJpYXQiOjE3MjkyOTY0NDUsImV4cCI6MTcyOTMwMDA0NX0.cLQ_1MmjkW6VFBmMu7UXJd69t2efyh21eSEDJhOtUhg
+
+#### ADICONAR MEMBRO AO SQUAD
+POST http://localhost:3333/squads/27/members
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbnNlbiIsInN1YiI6Nywicm9sZSI6Im1hbmFnZXIiLCJpYXQiOjE3MjkyOTY0NDUsImV4cCI6MTcyOTMwMDA0NX0.cLQ_1MmjkW6VFBmMu7UXJd69t2efyh21eSEDJhOtUhg
+  
+  {
+    "userId":  19,
+    "role": "employee"
+  }
+
+### GET TESTE 
+
+GET http://localhost:3333/squads/all
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbnNlbiIsInN1YiI6Nywicm9sZSI6Im1hbmFnZXIiLCJpYXQiOjE3MjkyOTY0NDUsImV4cCI6MTcyOTMwMDA0NX0.cLQ_1MmjkW6VFBmMu7UXJd69t2efyh21eSEDJhOtUhg
